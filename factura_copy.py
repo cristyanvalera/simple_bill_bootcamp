@@ -1,5 +1,4 @@
 from datetime import datetime
-#from tabulate import tabulate
 
 inventory = [
     {"id": 1, "name": "cafe", "price": 12.04, "stock": 25},
@@ -30,8 +29,7 @@ print('''
     -- MENU DE PRODUCTOS --
 ------------------------------------''')
 for product in inventory:
-    name = product["name"]
-    price = product["price"]
+    name, price = product["name"], product["price"]
     print(f"{name.title():15} ${price}")
 
 shopping_car = []

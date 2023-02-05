@@ -46,7 +46,8 @@ while True:
 
     for product in inventory:
         if buscar.lower() == product["name"]:
-            shopping_car.append({"name": product["name"], "price": product["price"]})
+            shopping_car.append({"name": product["name"], 
+                                 "price": product["price"]})
         elif buscar.lower() == "q":
             break
 
@@ -60,10 +61,10 @@ print(f"Documento: {document}")
 print("-----------------------------------")
 for product in shopping_car:
     name, price = product["name"], product["price"]
-    print("{:<20} ${:<8}".format(name.title(), price))
+    print("{:<26} ${:<9}".format(name.title(), price))
 
 print("-----------------------------------")
-print(f"SubTotal: \t   ${subtotal:.2f}")
-print(f"IVA 16%: \t   ${iva:.2f}")
+print(f"SubTotal:", " " * 16, f"${subtotal:.2f}")
+print(f"IVA 16%:", " " * 17, f"${iva:.2f}")
 print("-----------------------------------")
-print(f"Total: \t\t   ${total:.2f}")
+print("Total:", " " * 19, f"${total:.2f}")

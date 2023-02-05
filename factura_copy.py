@@ -29,8 +29,8 @@ print('''
     -- MENU DE PRODUCTOS --
 ------------------------------------''')
 for product in inventory:
-    name, price = product["name"], product["price"]
-    print(f"{name.title():15} ${price}")
+    id, name, price = product["id"], product["name"], product["price"]
+    print(f"{id} - {name.title():15} ${price}")
 
 shopping_car = []
 subtotal = 0

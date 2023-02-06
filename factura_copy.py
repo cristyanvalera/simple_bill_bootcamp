@@ -66,6 +66,7 @@ print(header)
 print(f"Cliente: {client}")
 print(f"Documento: {document}")
 print("-----------------------------------")
+
 for product in shopping_car:
     name, price = product["name"], product["price"]
     print("{:<26} ${:<9}".format(name.title(), price))

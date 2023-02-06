@@ -8,6 +8,12 @@ inventory = [
     {"id": 5, "name": "harina", "price": 3.45, "stock": 48},
 ]
 
+def show_products(inventory):
+    for product in inventory:
+        id, name, price = product["id"], product["name"], product["price"]
+        print(f"{id} - {name.title():15} ${price}")
+
+
 header = '''
 ------------------------------------
              SENIAT
@@ -28,9 +34,10 @@ print('''
 ------------------------------------
     -- MENU DE PRODUCTOS --
 ------------------------------------''')
-for product in inventory:
-    id, name, price = product["id"], product["name"], product["price"]
-    print(f"{id} - {name.title():15} ${price}")
+
+ask = input("¿Desea ver la lista de productos disponibles? S/N: ").lower()
+if ask == "s":
+    show_products(inventory)
 
 shopping_car = []
 subtotal = 0

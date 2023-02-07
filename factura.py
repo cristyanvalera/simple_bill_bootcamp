@@ -13,6 +13,17 @@ def show_products(inventory):
         id, name, price = product["id"], product["name"], product["price"]
         print(f"{id} - {name.title():15} ${price}")
 
+def calc_totals(shopping_car):
+    subtotal = sum(product['price'] for product in shopping_car)
+    iva = subtotal * .16
+    total = subtotal + iva
+    return subtotal, iva, total
+
+def show_shooping(shopping_car):
+    for product in shopping_car:
+        name, price = product["name"], product["price"]
+        print("{:<26} ${:<9}".format(name.title(), price))
+
 
 header = '''
 ------------------------------------
@@ -45,11 +56,7 @@ iva = 0
 total = 0
 
 print("-----------------------------------")
-salir = input("Para salir del programa escriba 'q'\n")
-if salir == "q":
-    quit()
-
-# print("Para salir del programa escriba 'q'\n")
+print("Para salir del programa escriba 'q'\n")
 while True:
     buscar = input("--> ")
     if buscar.lower() == "q":
@@ -62,18 +69,14 @@ while True:
         elif buscar.lower() == "q":
             break
 
-subtotal = sum(product['price'] for product in shopping_car)
-iva = subtotal * .16
-total = subtotal + iva
+subtotal, iva, total = calc_totals(shopping_car)
 
 print(header)
 print(f"Cliente: {client}")
 print(f"Documento: {document}")
 print("-----------------------------------")
 
-for product in shopping_car:
-    name, price = product["name"], product["price"]
-    print("{:<26} ${:<9}".format(name.title(), price))
+show_shooping(shopping_car)
 
 print("-----------------------------------")
 print(f"SubTotal:", " " * 16, f"${subtotal:.2f}")

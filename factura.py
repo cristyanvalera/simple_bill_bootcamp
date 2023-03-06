@@ -83,3 +83,4 @@ print(f"SubTotal:", " " * 16, f"${subtotal:.2f}")
 print(f"IVA 16%: ", " " * 16, f"${iva:.2f}")
 print("-----------------------------------")
 print("Total:    ", " " * 15, f"${total:.2f}")
+

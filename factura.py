@@ -12,6 +12,7 @@ def show_products(inventory):
     for product in inventory:
         id, name, price = product["id"], product["name"], product["price"]
         print(f"{id} - {name.title():15} ${price}")
+    print("Escoja el producto de su elección.")
 
 def calc_totals(shopping_car):
     subtotal = sum(product['price'] for product in shopping_car)
@@ -23,7 +24,6 @@ def show_shooping(shopping_car):
     for product in shopping_car:
         name, price = product["name"], product["price"]
         print("{:<26} ${:<9}".format(name.title(), price))
-
 
 header = '''
 ------------------------------------
@@ -46,9 +46,7 @@ print('''
     -- MENU DE PRODUCTOS --
 ------------------------------------''')
 
-ask = input("¿Desea ver la lista de productos disponibles? S/N: ").lower()
-if ask == "s":
-    show_products(inventory)
+show_products(inventory)
 
 shopping_car = []
 subtotal = 0
@@ -57,17 +55,19 @@ total = 0
 
 print("-----------------------------------")
 print("Para salir del programa escriba 'q'\n")
+
 while True:
-    buscar = input("--> ")
-    if buscar.lower() == "q":
+    buscar = input("--> ").lower()
+    if buscar == "q":
         break
 
     for product in inventory:
-        if buscar.lower() == product["name"]:
-            shopping_car.append({"name": product["name"], 
-                                 "price": product["price"]})
-        elif buscar.lower() == "q":
-            break
+        if buscar == product["name"] or buscar == str(product["id"]):
+            shopping_car.append({
+                "name": product["name"], 
+                "price": product["price"],
+            })
+            print(product["name"], product["price"])
 
 subtotal, iva, total = calc_totals(shopping_car)
 
